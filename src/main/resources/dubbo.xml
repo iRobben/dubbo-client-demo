@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- dubbo应用 此处根据服务端和消费端自行配置,提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="${dubbo.provider.application.name}" owner="${dubbo.owner}" organization="${dubbo.organization}" logger="slf4j" />
+
+    <!-- 使用zookeeper注册中心暴露服务地址,dubbo注册中心   此处服务端和消费端 相同配置即可   备注：register="false"  只订阅用于调试用，即不向zookeeper注册中心注册服务 -->
+    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" timeout="${dubbo.registry.timeout}" register="true" file="./dubboregistry/dubbo-registry.properties" />
+
+	<dubbo:reference interface="com.zrh.dubbo.server.api.DemoService" id="demoService" cluster="failfast" loadbalance="roundrobin"/>
+
+</beans>

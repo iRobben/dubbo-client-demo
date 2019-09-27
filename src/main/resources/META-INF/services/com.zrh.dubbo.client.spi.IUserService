@@ -1,0 +1,2 @@
+com.zrh.dubbo.client.spi.DefaultUserServiceImpl
+com.zrh.dubbo.client.spi.CommonUserServiceImpl

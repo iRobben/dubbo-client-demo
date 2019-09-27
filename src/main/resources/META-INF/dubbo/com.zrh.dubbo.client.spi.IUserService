@@ -1,0 +1,2 @@
+default = com.zrh.dubbo.client.spi.DefaultUserServiceImpl
+common = com.zrh.dubbo.client.spi.CommonUserServiceImpl
